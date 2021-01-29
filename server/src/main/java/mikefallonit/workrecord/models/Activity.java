@@ -1,11 +1,24 @@
 package mikefallonit.workrecord.models;
 
+import javax.persistence.*;
+
 public class Activity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="date")
     private String date;
+
+    @Column(name="hours")
     private double hours;
+
+    @ManyToOne
+    @JoinColumn(name="job_id", nullable = false)
     private Job job;
+
+    @Column(name="details")
     private String details;
 
     public Activity(String date, double hours, Job job, String details) {

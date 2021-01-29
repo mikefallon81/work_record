@@ -1,17 +1,39 @@
 package mikefallonit.workrecord.models;
 
+import javax.persistence.*;
+
 public class Customer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="email")
     private String email;
-    private long contact_number;
+
+    @Column(name="contactno")
+    private String contact_number;
+
+    @Column(name="addressline")
     private String address_line;
+
+    @Column(name="region")
     private String region;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="postcode")
     private String postcode;
 
-    public Customer(String name, String email, long contact_number, String address_line, String region, String city, String postcode) {
+    @OneToOne(mappedBy = "address")
+    private Job job;
+
+
+    public Customer(String name, String email, String contact_number, String address_line, String region, String city, String postcode, Job job) {
         this.name = name;
         this.email = email;
         this.contact_number = contact_number;
@@ -19,6 +41,7 @@ public class Customer {
         this.region = region;
         this.city = city;
         this.postcode = postcode;
+        this.job = job;
     }
 
     public Customer() {
@@ -48,11 +71,11 @@ public class Customer {
         this.email = email;
     }
 
-    public long getContact_number() {
+    public String getContact_number() {
         return contact_number;
     }
 
-    public void setContact_number(long contact_number) {
+    public void setContact_number(String contact_number) {
         this.contact_number = contact_number;
     }
 
@@ -86,5 +109,13 @@ public class Customer {
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

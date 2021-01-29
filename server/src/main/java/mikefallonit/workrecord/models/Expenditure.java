@@ -1,16 +1,34 @@
 package mikefallonit.workrecord.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="expenditures")
+
 public class Expenditure {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="date")
     private String date;
+
+    @Column(name="expensetype")
     private String expensetype;
+
+    @Column(name="amount")
+    private double amount;
+
+   @ManyToOne
+   @JoinColumn(name="job_id", nullable = false)
     private Job job;
 
-    public Expenditure(String date, String expensetype, Job job) {
+    public Expenditure(String date, String expensetype, Job job, double amount) {
         this.date = date;
         this.expensetype = expensetype;
         this.job = job;
+        this.amount = amount;
     }
 
     public Expenditure() {
@@ -40,6 +58,14 @@ public class Expenditure {
         this.expensetype = expensetype;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     public Job getJob() {
         return job;
     }
@@ -47,4 +73,6 @@ public class Expenditure {
     public void setJob(Job job) {
         this.job = job;
     }
+
+
 }
