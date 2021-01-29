@@ -24,7 +24,7 @@ public class JobController {
         return jobRepository.findAll();
     }
 
-    @GetMapping("{id")
+    @GetMapping("{id}")
     public Optional<Job> getJob(@PathVariable Long id){
         return jobRepository.findById(id);
     }
