@@ -14,7 +14,7 @@ public class Job {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name="customer_id", referencedColumnName = @id)
+    @JoinColumn(name="customer_id", referencedColumnName = "id")
     private Customer customer;
 
     @Column(name="hourly_rate")
