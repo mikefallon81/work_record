@@ -1,7 +1,7 @@
 package mikefallonit.workrecord.controllers;
 
-import mikefallonit.workrecord.models.Customer;
-import mikefallonit.workrecord.repositories.CustomerRepository;
+import mikefallonit.workrecord.models.Activity;
+import mikefallonit.workrecord.repositories.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,20 +12,22 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/customers")
+@RequestMapping(value="/activities")
 
-public class CustomerController {
+public class ActivityController {
 
     @Autowired
-    CustomerRepository customerRepository;
+    ActivityRepository activityRepository;
 
     @GetMapping
-    public List<Customer> getAllCustomers(){
-        return customerRepository.findAll();
+    public List<Activity> getAllActivities(){
+        return activityRepository.findAll();
     }
 
-    @GetMapping("id")
-    public Optional<Customer> getCustomer(@PathVariable Long id){
-        return customerRepository.findById(id);
+    @GetMapping("{id")
+    public Optional<Activity> getActivity(@PathVariable Long id){
+        return activityRepository.findById(id);
     }
+
+
 }
