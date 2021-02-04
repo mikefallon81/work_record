@@ -2,6 +2,9 @@ package mikefallonit.workrecord.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="customers")
+
 public class Customer {
 
     @Id
@@ -29,11 +32,11 @@ public class Customer {
     @Column(name="postcode")
     private String postcode;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "customer")
     private Job job;
 
 
-    public Customer(String name, String email, String contact_number, String address_line, String region, String city, String postcode, Job job) {
+    public Customer(String name, String email, String contact_number, String address_line, String region, String city, String postcode) {
         this.name = name;
         this.email = email;
         this.contact_number = contact_number;
@@ -41,7 +44,7 @@ public class Customer {
         this.region = region;
         this.city = city;
         this.postcode = postcode;
-        this.job = job;
+
     }
 
     public Customer() {
@@ -111,11 +114,5 @@ public class Customer {
         this.postcode = postcode;
     }
 
-    public Job getJob() {
-        return job;
-    }
 
-    public void setJob(Job job) {
-        this.job = job;
-    }
 }
