@@ -2,6 +2,9 @@ package mikefallonit.workrecord.models;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="activities")
+
 public class Activity {
 
     @Id
