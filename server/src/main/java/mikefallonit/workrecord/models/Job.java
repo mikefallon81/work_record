@@ -13,15 +13,28 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="job_type")
+    private String jobType;
+
+    @Column(name="date")
+    private String date;
+
+    @Column(name="description")
+    private String description;
+
     @OneToOne
     @JoinColumn(name="customer_id", referencedColumnName = "id")
     private Customer customer;
 
-    @Column(name="hourly_rate")
-    private double hourlyRate;
+    @Column(name="invoice_amount")
+    private double invoiceAmount;
 
-    @Column(name="hours")
-    private double hours;
+    @Column(name="date_invoiced")
+    private String dateInvoiced;
+
+    @Column(name="date_paid")
+    private String datePaid;
+
 
     @OneToMany(mappedBy = "job")
     private List<Expenditure> expenditures;
@@ -29,10 +42,14 @@ public class Job {
     @OneToMany(mappedBy = "job")
     private List<Activity> activities;
 
-    public Job(Customer customer, double hourlyRate, double hours) {
+    public Job(String jobType, String date, String description, Customer customer, double invoiceAmount,  String dateInvoiced, String datePaid) {
+        this.jobType = jobType;
+        this.date = date;
+        this.description = description;
         this.customer = customer;
-        this.hourlyRate = hourlyRate;
-        this.hours = hours;
+        this.invoiceAmount = invoiceAmount;
+        this.dateInvoiced = dateInvoiced;
+        this.datePaid = datePaid;
         this.expenditures = new ArrayList<Expenditure>();
         this.activities = new ArrayList<Activity>();
     }
@@ -48,6 +65,30 @@ public class Job {
         this.id = id;
     }
 
+    public String getJobType() {
+        return jobType;
+    }
+
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -56,21 +97,29 @@ public class Job {
         this.customer = customer;
     }
 
-    public double getHourlyRate() {
-        return hourlyRate;
+
+
+    public double getInvoiceAmount() {
+        return invoiceAmount;
     }
 
-    public void setHourlyRate(double hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    public void setInvoiceAmount(double invoiceAmount) {
+        this.invoiceAmount = invoiceAmount;
     }
 
-    public double getHours() {
-        return hours;
+    public String getDateInvoiced() {
+        return dateInvoiced;
     }
 
-    public void setHours(double hours) {
-        this.hours = hours;
+    public void setDateInvoiced(String dateInvoiced) {
+        this.dateInvoiced = dateInvoiced;
     }
 
+    public String getDatePaid() {
+        return datePaid;
+    }
 
+    public void setDatePaid(String datePaid) {
+        this.datePaid = datePaid;
+    }
 }
