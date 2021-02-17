@@ -20,30 +20,15 @@ public class Customer {
     @Column(name="contactno")
     private String contact_number;
 
-    @Column(name="addressline")
-    private String address_line;
-
-    @Column(name="region")
-    private String region;
-
-    @Column(name="city")
-    private String city;
-
-    @Column(name="postcode")
-    private String postcode;
-
     @OneToOne(mappedBy = "customer")
     private Job job;
 
 
-    public Customer(String name, String email, String contact_number, String address_line, String region, String city, String postcode) {
+    public Customer(String name, String email, String contact_number) {
         this.name = name;
         this.email = email;
         this.contact_number = contact_number;
-        this.address_line = address_line;
-        this.region = region;
-        this.city = city;
-        this.postcode = postcode;
+
 
     }
 
@@ -82,37 +67,7 @@ public class Customer {
         this.contact_number = contact_number;
     }
 
-    public String getAddress_line() {
-        return address_line;
-    }
 
-    public void setAddress_line(String address_line) {
-        this.address_line = address_line;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
 
 
 }
