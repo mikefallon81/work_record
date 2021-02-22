@@ -19,10 +19,7 @@ public class ActivityController {
     @Autowired
     ActivityRepository activityRepository;
 
-    @GetMapping
-    public List<Activity> getAllActivities(){
-        return activityRepository.findAll();
-    }
+
 
     @GetMapping("{id")
     public Optional<Activity> getActivity(@PathVariable Long id){
