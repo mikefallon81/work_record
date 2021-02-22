@@ -42,6 +42,10 @@ public class DataLoader implements ApplicationRunner {
        jobRepository.save(job2);
        Job job3 = new Job("IT", "24/01/2021","Website Hosting & Office Subscription", paulFallonPlumbing, 46.00, "24/01/2021", "24/01/2021");
        jobRepository.save(job3);
+       Job job4 = new Job("Labouring", "20/02/2021", "Insulating Pipes @ Durward Grove", paulFallonPlumbing, 80.00, "20/02/2021", "Unpaid" );
+       jobRepository.save(job4);
+        Job job5 = new Job("Labouring", "06/02/2021", "Clear Tiles & Insulate Pipes (loft) @ Durward Grove", paulFallonPlumbing, 40.00, "06/02/2021", "17/02/2021" );
+        jobRepository.save(job5);
 
 
     }
