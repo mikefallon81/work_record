@@ -1,5 +1,7 @@
 package mikefallonit.workrecord.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,9 @@ public class Job {
     @Column(name="description")
     private String description;
 
-    @OneToOne
-    @JoinColumn(name="customer_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("jobs")
+    @ManyToOne
+    @JoinColumn(name="customer_id", nullable = false)
     private Customer customer;
 
     @Column(name="invoice_amount")
@@ -50,8 +53,8 @@ public class Job {
         this.invoiceAmount = invoiceAmount;
         this.dateInvoiced = dateInvoiced;
         this.datePaid = datePaid;
-        this.expenditures = new ArrayList<Expenditure>();
-        this.activities = new ArrayList<Activity>();
+        this.expenditures = new ArrayList<>();
+        this.activities = new ArrayList<>();
     }
 
     public Job() {
@@ -96,8 +99,6 @@ public class Job {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
-
 
     public double getInvoiceAmount() {
         return invoiceAmount;

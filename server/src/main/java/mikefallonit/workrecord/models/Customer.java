@@ -1,6 +1,12 @@
 package mikefallonit.workrecord.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name="customers")
@@ -17,17 +23,19 @@ public class Customer {
     @Column(name="email")
     private String email;
 
-    @Column(name="contactno")
-    private String contact_number;
+    @Column(name="contact_no")
+    private String contactNumber;
 
-    @OneToOne(mappedBy = "customer")
-    private Job job;
+    @JsonIgnore
+    @OneToMany(mappedBy = "customer")
+    private List<Job> jobs;
 
 
-    public Customer(String name, String email, String contact_number) {
+    public Customer(String name, String email, String contactNumber) {
         this.name = name;
         this.email = email;
-        this.contact_number = contact_number;
+        this.contactNumber = contactNumber;
+        this.jobs = new ArrayList<>();
 
 
     }
@@ -59,15 +67,19 @@ public class Customer {
         this.email = email;
     }
 
-    public String getContact_number() {
-        return contact_number;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setContact_number(String contact_number) {
-        this.contact_number = contact_number;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
+    public List<Job> getJobs() {
+        return jobs;
+    }
 
-
-
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
+    }
 }
