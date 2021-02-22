@@ -19,10 +19,7 @@ public class ExpenditureController {
     @Autowired
     ExpenditureRepository expenditureRepository;
 
-    @GetMapping
-    public List<Expenditure> getAllExpenditure(){
-        return expenditureRepository.findAll();
-    }
+
 
     @GetMapping("{id")
     public Optional<Expenditure> getExpenditure(@PathVariable Long id){

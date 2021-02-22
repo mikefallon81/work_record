@@ -19,10 +19,7 @@ public class JobController {
     @Autowired
     JobRepository jobRepository;
 
-    @GetMapping
-    public List<Job> getAllJobs(){
-        return jobRepository.findAll();
-    }
+
 
     @GetMapping("{id}")
     public Optional<Job> getJob(@PathVariable Long id){
